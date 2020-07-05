@@ -1,0 +1,27 @@
+{
+  "name": "uni-lb-action-sheet",
+  "version": "1.0.0",
+  "description": "uniapp自定义可左右互动Action操作列表",
+  "main": "components/lb-action-sheet/index.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liub1934/uni-lb-action-sheet.git"
+  },
+  "keywords": [
+    "uni-lb-action-sheet"
+  ],
+  "author": "https://ext.dcloud.net.cn/plugin?id=1111",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liub1934/uni-lb-action-sheet/issues"
+  },
+  "homepage": "https://github.com/liub1934/uni-lb-action-sheet#readme",
+  "standard": {
+    "globals": {
+      "uni": false
+    }
+  }
+}
