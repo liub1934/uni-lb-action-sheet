@@ -21,7 +21,8 @@
 </p>
 
 工做项目需要，开发了一个可自定义的 Action 操作列表，支持左右滑动，可配置性强，可自定义性高。  
-Github：[uni-lb-action-sheet](https://github.com/liub1934/uni-lb-action-sheet)
+Github：[uni-lb-action-sheet](https://github.com/liub1934/uni-lb-action-sheet)  
+插件市场：[uni-lb-action-sheet](https://ext.dcloud.net.cn/plugin?id=2236)
 
 ![image](https://image.liubing.me/2020/07/05/ac1bb24b5db1b.png)
 
@@ -139,7 +140,7 @@ this.$refs.actionSheet.hide() // 隐藏
 | actions                | 操作列表数据，详细说明见下`Actions`  | Array   | -          | -                  |
 | full                   | 是否整屏宽度显示                     | Boolean | true/false | false              |
 | column-num             | 每列的图标个数                       | Number  | -          | 4                  |
-| row-num                | 行数                                 | Number  | -          | 2                  |
+| row-num                | 行数                                 | Number  | -          | 1                  |
 | grid-height            | 每个格子的高度，单位 px              | Number  | -          | 80                 |
 | image-width            | 图片图标的宽度                       | String  | -          | 30px               |
 | image-height           | 图片图标的高度，未指定同 image-width | String  | -          | -                  |
@@ -161,7 +162,7 @@ this.$refs.actionSheet.hide() // 隐藏
 | indicator-active-color | 当前选中的指示点颜色                 | String  | -          | #909399            |
 | animation              | 是否显示动画效果                     | Boolean | true/false | true               |
 | inline                 | 是否 inline 模式                     | Boolean | true/false | false              |
-| z-index                | 层级，遮罩层层级默认-1               | Boolean | true/false | false              |
+| z-index                | 层级，遮罩层层级默认-1               | Number  | -          | 99                 |
 
 ### Actions
 
