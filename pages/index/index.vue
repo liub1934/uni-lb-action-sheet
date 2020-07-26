@@ -24,6 +24,10 @@
 						path: '/pages/demos/demo2/demo2'
 					},
 					{
+						title: '使用iconfont彩色图标',
+						path: '/pages/demos/demo6/demo6'
+					},
+					{
 						title: '图标部分禁用',
 						path: '/pages/demos/demo3/demo3'
 					},

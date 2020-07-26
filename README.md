@@ -21,8 +21,7 @@
 </p>
 
 工做项目需要，开发了一个可自定义的 Action 操作列表，支持左右滑动，可配置性强，可自定义性高。  
-Github：[uni-lb-action-sheet](https://github.com/liub1934/uni-lb-action-sheet)  
-插件市场：[uni-lb-action-sheet](https://ext.dcloud.net.cn/plugin?id=2236)
+Github：[uni-lb-action-sheet](https://github.com/liub1934/uni-lb-action-sheet)
 
 ![image](https://image.liubing.me/2020/07/05/ac1bb24b5db1b.png)
 
@@ -140,13 +139,13 @@ this.$refs.actionSheet.hide() // 隐藏
 | actions                | 操作列表数据，详细说明见下`Actions`  | Array   | -          | -                  |
 | full                   | 是否整屏宽度显示                     | Boolean | true/false | false              |
 | column-num             | 每列的图标个数                       | Number  | -          | 4                  |
-| row-num                | 行数                                 | Number  | -          | 1                  |
+| row-num                | 行数                                 | Number  | -          | 2                  |
 | grid-height            | 每个格子的高度，单位 px              | Number  | -          | 80                 |
 | image-width            | 图片图标的宽度                       | String  | -          | 30px               |
 | image-height           | 图片图标的高度，未指定同 image-width | String  | -          | -                  |
 | icon-prefix            | icon 图标指定前缀                    | String  | -          | -                  |
 | icon-size              | icon 图标大小                        | String  | -          | 30px               |
-| icon-color             | icon 图标颜色                        | String  | -          | -                  |
+| icon-color             | icon 图标颜色，彩色图标不支持此属性  | String  | -          | -                  |
 | label-color            | 图标文字颜色                         | String  | -          | #303133            |
 | label-size             | 图标文字大小                         | String  | -          | 14px               |
 | radius                 | 弹出区域圆角支持                     | String  | -          | 10px               |
@@ -162,7 +161,7 @@ this.$refs.actionSheet.hide() // 隐藏
 | indicator-active-color | 当前选中的指示点颜色                 | String  | -          | #909399            |
 | animation              | 是否显示动画效果                     | Boolean | true/false | true               |
 | inline                 | 是否 inline 模式                     | Boolean | true/false | false              |
-| z-index                | 层级，遮罩层层级默认-1               | Number  | -          | 99                 |
+| z-index                | 层级，遮罩层层级默认-1               | Boolean | true/false | false              |
 
 ### Actions
 
@@ -175,7 +174,7 @@ this.$refs.actionSheet.hide() // 隐藏
 | imageHeight | 图标宽度, 如无设置，取`props`中的`image-height`，需要小于`props`中的`grid-height` | String        | -      | -      |
 | icon        | 图标 icon，与 image 只需要设置一个                                                | String        | -      | -      |
 | iconSize    | 图标大小, 如无设置，取`props`中的`icon-size`                                      | String        | -      | -      |
-| iconColor   | 图标颜色, 如无设置，取`props`中的`icon-color`                                     | String        | -      | -      |
+| iconColor   | 图标颜色, 如无设置，取`props`中的`icon-color`，彩色图标不支持此属性               | String        | -      | -      |
 | disabled    | 是否禁用                                                                          | Boolean       | -      | -      |
 
 ### 方法
@@ -198,6 +197,36 @@ this.$refs.actionSheet.hide() // 隐藏
 | 插槽名 | 说明         |
 | :----- | :----------- |
 | footer | 底部取消按钮 |
+
+## iconfont 彩色图片使用方法
+
+在[iconfont](https://www.iconfont.cn/)中，将需要的彩色图标加入到项目中，点击`Symbol`，生成下面的一个 js 地址，如图所示：
+
+![image](https://image.liubing.me/2020/07/26/aa736c717a235.png)
+
+然后参考该教程使用即可：[https://github.com/HuaRongSAO/iconfont-tools](https://github.com/HuaRongSAO/iconfont-tools)。  
+下面简单说下步骤：  
+1.全局安装`iconfont-tools`：执行该`npm i -g iconfont-tools`进行安装  
+2.在项目根目录，执行下面的命令，将命令中的`//at.alicdn.com/t/font_1967328_3h3wk7gbbjg.js`换成上图自己的图标的文件 js 地址，一路回车至结束  
+（备注：如果你是用 HX 编辑器，直接点击启动项目的右侧的`新建终端标签卡`，输入下面的命令即可）
+
+![image](https://image.liubing.me/2020/07/26/ed6c5501d9f21.png)
+
+```shell
+iconfont-tools --from //at.alicdn.com/t/font_1967328_3h3wk7gbbjg.js --to ./
+```
+
+![image](https://image.liubing.me/2020/07/26/3bfb1c58244e5.png)
+
+期间也可以按提示修改输出的文件夹名称、css 文件名称等等。
+
+3.删除其他文件，我们只需要保留一个`iconfont-weapp-icon.css`css 文件即可，这个文件的位置可以随意放到哪儿，最后只需要在`main.js`中引入即可
+
+```shell
+import './iconfont-weapp/iconfont-weapp-icon.css'
+```
+
+4.剩下的参考`demo6`即可，注意需要设置`icon-prefix`，值为执行`iconfont-tools`中的`设置css文件的prefix`
 
 ## 其他
 

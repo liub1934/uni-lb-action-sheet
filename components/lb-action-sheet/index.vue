@@ -1,6 +1,7 @@
 <template>
   <view v-if="visible || inline"
     :class="[className]">
+    <!-- 遮罩层 -->
     <view v-if="!inline"
       :class="[
         `${className}-mask`,
@@ -52,6 +53,7 @@
                 @click="handleTap(grid)">
                 <view :class="[`${className}-grid-container`]">
                   <view :class="[`${className}-grid-content`]">
+                    <!-- 图片图标 -->
                     <view v-if="grid.image"
                       :class="[`${className}-grid-image`]">
                       <image :src="grid.image"
@@ -63,6 +65,7 @@
                       </image>
                     </view>
 
+                    <!-- icon图标 -->
                     <view v-if="grid.icon"
                       :class="[`${className}-grid-icon`]">
                       <text :class="[
@@ -72,10 +75,14 @@
                         ]"
                         :style="{
                           color: grid.iconColor || iconColor,
-                          fontSize: grid.iconSize || iconSize
+                          fontSize: grid.iconSize || iconSize,
+                          width: grid.iconSize || iconSize,
+                          height: grid.iconSize || iconSize
                         }">
                       </text>
                     </view>
+
+                    <!-- 文字 -->
                     <view :class="[`${className}-grid-label`]">
                       <text :class="[`${className}-grid-text`]"
                         :style="{
@@ -244,9 +251,6 @@ export default {
       }
       return actions
     }
-  },
-  mounted () {
-    console.log(this.$refs)
   },
   methods: {
     show () {

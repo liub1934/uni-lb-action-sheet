@@ -3,6 +3,7 @@
     <button @click="handleClick">点击弹出</button>
     <button @click="handleClick2">点击弹出全屏</button>
     <lb-action-sheet ref="actionSheet"
+      icon-prefix="t-icon"
       :actions="actions"
       :full="full"
       @click="actionClick">
@@ -17,50 +18,55 @@ export default {
 			full: false,
 			actions: [
         {
-					name: 'wx',
-					label: '微信',
-					image: '/static/wx.png'
+					name: 'aixin',
+					label: '爱心',
+					icon: 'aixin'
 				},
 				{
-					name: 'qq',
-					label: 'QQ',
-					image: '/static/qq.png'
+					name: 'biaoqing',
+					label: '表情',
+					icon: 'biaoqing'
 				},
 				{
-					name: 'zfb',
-					label: '支付宝',
-					image: '/static/zfb.png'
+					name: 'biaoqian',
+					label: '标签',
+					icon: 'biaoqian'
 				},
 				{
-					name: 'tt',
-					label: '头条',
-					image: '/static/tt.png'
+					name: 'gerenzhongxin',
+					label: '个人中心',
+					icon: 'gerenzhongxin'
 				},
 				{
-					name: 'dy',
-					label: '抖音',
-					image: '/static/dy.png'
+					name: 'shuidi',
+					label: '水滴',
+					icon: 'shuidi'
 				},
 				{
-					name: 'jd',
-					label: '京东',
-					image: '/static/jd.png'
+					name: 'liaotian',
+					label: '聊天',
+					icon: 'liaotian'
 				},
 				{
-					name: 'tm',
-					label: '天猫',
-					image: '/static/tm.png'
+					name: 'dingwei',
+					label: '定位',
+					icon: 'dingwei'
 				},
 				{
-					name: 'tb',
-					label: '淘宝',
-					image: '/static/tb.png'
+					name: 'dianhua',
+					label: '电话',
+					icon: 'dianhua'
 				},
 				{
-					name: 'pdd',
-					label: '拼多多',
-					image: '/static/pdd.png'
-        }
+					name: 'bianji',
+					label: '编辑',
+					icon: 'bianji'
+				},
+				{
+					name: 'shijian',
+					label: '时间',
+					icon: 'shijian'
+				}
       ]
 		}
 	},

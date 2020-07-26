@@ -123,12 +123,18 @@
 // }
 
 .lb-action-sheet-grid-icon {
-  text-align: center;
+  /* #ifndef APP-NVUE */
+  display: flex;
+  /* #endif */
+  align-items: center;
+  justify-content: center;
 }
 
 .lb-action-sheet-grid-image {
   position: relative;
+  /* #ifndef APP-NVUE */
   display: flex;
+  /* #endif */
   align-items: center;
   justify-content: center;
 }
@@ -136,7 +142,9 @@
 .lb-action-sheet-grid-label {
   position: relative;
   margin-top: 5px;
+  /* #ifndef APP-NVUE */
   display: flex;
+  /* #endif */
   align-items: center;
   justify-content: center;
 }
@@ -148,7 +156,9 @@
 }
 
 .lb-action-sheet-dots {
+  /* #ifndef APP-NVUE */
   display: flex;
+  /* #endif */
   align-items: center;
   justify-content: center;
 }
@@ -160,10 +170,6 @@
   transition-property: width, color, background-color;
   transition-duration: 0.3s;
 }
-
-// .lb-action-sheet-dot-active {
-//   background-color: #909399;
-// }
 
 .lb-action-sheet-cancel-button {
   border-radius: 0;
