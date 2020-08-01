@@ -25,7 +25,9 @@
 </p>
 
 工做项目需要，开发了一个可自定义的 Action 操作列表，支持左右滑动，可配置性强，可自定义性高。  
-Github：[uni-lb-action-sheet](https://github.com/liub1934/uni-lb-action-sheet)
+Github：[uni-lb-action-sheet](https://github.com/liub1934/uni-lb-action-sheet)  
+插件市场：[uni-lb-action-sheet](https://ext.dcloud.net.cn/plugin?id=2236)  
+H5 Demo：[在线预览](https://github.liubing.me/uni-lb-action-sheet)
 
 ![image](https://image.liubing.me/2020/07/05/ac1bb24b5db1b.png)
 
