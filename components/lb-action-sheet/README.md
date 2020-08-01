@@ -14,6 +14,10 @@
   <a href="https://npmcharts.com/compare/uni-lb-action-sheet?minimal=true">
     <img src="https://img.shields.io/npm/dm/uni-lb-action-sheet">
   </a>
+
+  <a href="https://standardjs.com">
+    <img src="https://img.shields.io/badge/code%20style-standard-brightgreen">
+  </a>
   
   <a href="https://github.com/liub1934/uni-lb-action-sheet/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/liub1934/uni-lb-action-sheet">
@@ -118,6 +122,27 @@ this.$refs.actionSheet.show() // 显示
 this.$refs.actionSheet.hide() // 隐藏
 ```
 
+## 小程序开放能力支持，同 Button
+
+```JSON
+actions: [
+  {
+    "name": "wx",
+    "label": "微信",
+    "image": "/static/wx.png",
+    "openType": "getUserInfo" // 开放能力的获取用户信息
+  }
+]
+```
+
+```HTML
+<lb-action-sheet ref="actionSheet" @getuserinfo="getuserinfo"></lb-action-sheet>
+
+getuserinfo (e) {
+  console.log(res) // 获取的用户信息
+}
+```
+
 ## 插槽使用
 
 选择器支持一些可自定义化的插槽，如自定义底部取消按钮，可使用插槽，使用方法如下：
@@ -165,17 +190,18 @@ this.$refs.actionSheet.hide() // 隐藏
 
 ### Actions
 
-| 字段        | 说明                                                                              | 类型          | 可选值 | 默认值 |
-| :---------- | :-------------------------------------------------------------------------------- | :------------ | :----- | :----- |
-| name        | 数据 name，需唯一                                                                 | String/Number | -      | -      |
-| label       | 数据文字                                                                          | String        | -      | -      |
-| image       | 图片地址，与 icon 只需要设置一个                                                  | String        | -      | -      |
-| imageWdith  | 图标宽度，如无设置，取`props`中的`image-width`                                    | String        | -      | -      |
-| imageHeight | 图标宽度, 如无设置，取`props`中的`image-height`，需要小于`props`中的`grid-height` | String        | -      | -      |
-| icon        | 图标 icon，与 image 只需要设置一个                                                | String        | -      | -      |
-| iconSize    | 图标大小, 如无设置，取`props`中的`icon-size`                                      | String        | -      | -      |
-| iconColor   | 图标颜色, 如无设置，取`props`中的`icon-color`，彩色图标不支持此属性               | String        | -      | -      |
-| disabled    | 是否禁用                                                                          | Boolean       | -      | -      |
+| 字段                                    | 说明                                                                              | 类型          | 可选值 | 默认值 |
+| :-------------------------------------- | :-------------------------------------------------------------------------------- | :------------ | :----- | :----- |
+| name                                    | 数据 name，需唯一                                                                 | String/Number | -      | -      |
+| label                                   | 数据文字                                                                          | String        | -      | -      |
+| image                                   | 图片地址，与 icon 只需要设置一个                                                  | String        | -      | -      |
+| imageWdith                              | 图标宽度，如无设置，取`props`中的`image-width`                                    | String        | -      | -      |
+| imageHeight                             | 图标宽度, 如无设置，取`props`中的`image-height`，需要小于`props`中的`grid-height` | String        | -      | -      |
+| icon                                    | 图标 icon，与 image 只需要设置一个                                                | String        | -      | -      |
+| iconSize                                | 图标大小, 如无设置，取`props`中的`icon-size`                                      | String        | -      | -      |
+| iconColor                               | 图标颜色, 如无设置，取`props`中的`icon-color`，彩色图标不支持此属性               | String        | -      | -      |
+| disabled                                | 是否禁用                                                                          | Boolean       | -      | -      |
+| 开放能力：`openType` `、appParameter`等 | 小程序开放能力参数，同`button`组件                                                | -             |
 
 ### 方法
 
@@ -186,11 +212,12 @@ this.$refs.actionSheet.hide() // 隐藏
 
 ### Events
 
-| 事件名称 | 说明                                     | 回调参数 |
-| :------- | :--------------------------------------- | :------- |
-| show     | 打开操作面板时触发                       | -        |
-| hide     | 关闭操作面板时触发                       | -        |
-| cancel   | 点击面板取消时触发，会同时触发`hide`事件 | -        |
+| 事件名称     | 说明                                                 | 回调参数 |
+| :----------- | :--------------------------------------------------- | :------- |
+| show         | 打开操作面板时触发                                   | -        |
+| hide         | 关闭操作面板时触发                                   | -        |
+| cancel       | 点击面板取消时触发，会同时触发`hide`事件             | -        |
+| 开放能力事件 | 小程序开放能力事件，同`button`组件，如`@getuserinfo` | -        |
 
 ### 插槽
 

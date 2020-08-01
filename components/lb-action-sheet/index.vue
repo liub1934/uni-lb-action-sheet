@@ -1,8 +1,8 @@
 <template>
-  <view v-if="visible || inline"
-    :class="[className]">
+  <view v-if="visible || inline" :class="[className]">
     <!-- 遮罩层 -->
-    <view v-if="!inline"
+    <view
+      v-if="!inline"
       :class="[
         `${className}-mask`,
         animation ? `${className}-mask-animation` : ''
@@ -12,10 +12,12 @@
         zIndex: zIndex - 1
       }"
       @tap.stop="handleMaskTap"
-      @touchmove.stop.prevent="moveHandle">
+      @touchmove.stop.prevent="moveHandle"
+    >
     </view>
 
-    <view :class="[
+    <view
+      :class="[
         `${className}-container`,
         inline
           ? `${className}-container-inline`
@@ -27,20 +29,25 @@
       :style="{
         borderRadius: full ? `${radius} ${radius} 0 0` : radius,
         zIndex: zIndex
-      }">
+      }"
+    >
       <view :class="[`${className}-content`]">
-        <swiper :class="[`${className}-swiper`]"
+        <swiper
+          :class="[`${className}-swiper`]"
           :current="activeIndex"
           :indicator-dots="false"
           :autoplay="false"
           :style="{ height: `${gridHeight * realRowNum}px` }"
-          @change="handleSwiperChange">
-          <swiper-item v-for="(swiper, index) in actionsList"
-            :key="index">
-            <view :class="[`${className}-grid`]"
+          @change="handleSwiperChange"
+        >
+          <swiper-item v-for="(swiper, index) in actionsList" :key="index">
+            <view
+              :class="[`${className}-grid`]"
               :border="false"
-              :column-num="columnNum">
-              <view v-for="grid in swiper"
+              :column-num="columnNum"
+            >
+              <view
+                v-for="grid in swiper"
                 :key="grid.name"
                 :class="[
                   `${className}-grid-item`,
@@ -50,25 +57,34 @@
                   width: `${100 / columnNum}%`,
                   height: `${gridHeight}px`
                 }"
-                @click="handleTap(grid)">
+                @click="handleTap(grid)"
+              >
                 <view :class="[`${className}-grid-container`]">
                   <view :class="[`${className}-grid-content`]">
                     <!-- 图片图标 -->
-                    <view v-if="grid.image"
-                      :class="[`${className}-grid-image`]">
-                      <image :src="grid.image"
+                    <view
+                      v-if="grid.image"
+                      :class="[`${className}-grid-image`]"
+                    >
+                      <image
+                        :src="grid.image"
                         :class="[`${className}-grid-img`]"
                         :style="{
                           width: grid.imageWidth || imageWidth,
-                          height: grid.imageHeight || imageHeight || grid.imageWidth || imageWidth
-                        }">
+                          height:
+                            grid.imageHeight ||
+                            imageHeight ||
+                            grid.imageWidth ||
+                            imageWidth
+                        }"
+                      >
                       </image>
                     </view>
 
                     <!-- icon图标 -->
-                    <view v-if="grid.icon"
-                      :class="[`${className}-grid-icon`]">
-                      <text :class="[
+                    <view v-if="grid.icon" :class="[`${className}-grid-icon`]">
+                      <text
+                        :class="[
                           `${className}-grid-icon-con`,
                           iconPrefix ? iconPrefix : '',
                           grid.icon
@@ -78,20 +94,43 @@
                           fontSize: grid.iconSize || iconSize,
                           width: grid.iconSize || iconSize,
                           height: grid.iconSize || iconSize
-                        }">
+                        }"
+                      >
                       </text>
                     </view>
 
                     <!-- 文字 -->
                     <view :class="[`${className}-grid-label`]">
-                      <text :class="[`${className}-grid-text`]"
+                      <text
+                        :class="[`${className}-grid-text`]"
                         :style="{
                           color: labelColor,
                           fontSize: labelSize
-                        }">
+                        }"
+                      >
                         {{ grid.label }}
                       </text>
                     </view>
+
+                    <!-- 开放能力Button -->
+                    <button
+                      v-if="grid.openType"
+                      :class="[`${className}-open-type-button`]"
+                      :open-type="grid.openType"
+                      :form-type="grid.formType"
+                      :app-parameter="grid.appParameter"
+                      :lang="grid.lang"
+                      :session-from="grid.sessionFrom"
+                      :send-message-title="grid.sendMessageTitle"
+                      :send-message-path="grid.sendMessagePath"
+                      :send-message-img="grid.sendMessageImg"
+                      :show-message-card="grid.showMessageCard"
+                      @getphonenumber="getphonenumber"
+                      @getuserinfo="getuserinfo"
+                      @error="error"
+                      @opensetting="opensetting"
+                      @launchapp="launchapp"
+                    ></button>
                   </view>
                 </view>
               </view>
@@ -99,9 +138,12 @@
           </swiper-item>
         </swiper>
 
-        <view v-if="indicatorDots && actionsList.length > 1"
-          :class="[`${className}-dots`]">
-          <view v-for="(item, index) in actionsList"
+        <view
+          v-if="indicatorDots && actionsList.length > 1"
+          :class="[`${className}-dots`]"
+        >
+          <view
+            v-for="(item, index) in actionsList"
             :key="index"
             :class="[
               `${className}-dot-item`,
@@ -110,21 +152,23 @@
             :style="{
               width: indicatorSize,
               height: indicatorSize,
-              backgroundColor: index === activeIndex ? indicatorActiveColor : indicatorColor
-            }">
+              backgroundColor:
+                index === activeIndex ? indicatorActiveColor : indicatorColor
+            }"
+          >
           </view>
         </view>
       </view>
 
-      <view v-if="!inline"
-        :class="[`${className}-footer`]"
-        @tap="handleCancel">
+      <view v-if="!inline" :class="[`${className}-footer`]" @tap="handleCancel">
         <slot name="footer">
-          <button :class="[`${className}-cancel-button`]"
+          <button
+            :class="[`${className}-cancel-button`]"
             :style="{
               color: cancelColor,
               fontSize: cancelSize
-            }">
+            }"
+          >
             {{ cancelText }}
           </button>
         </slot>
@@ -289,11 +333,27 @@ export default {
     handleCancel () {
       this.$emit('cancel')
       this.hide()
+    },
+    // 以下按钮开放能力
+    getphonenumber (e) {
+      this.$emit('getphonenumber', e)
+    },
+    getuserinfo (e) {
+      this.$emit('getuserinfo', e)
+    },
+    error (e) {
+      this.$emit('error', e)
+    },
+    opensetting (e) {
+      this.$emit('opensetting', e)
+    },
+    launchapp (e) {
+      this.$emit('launchapp', e)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import "./index.scss";
+@import './index.scss';
 </style>

@@ -116,11 +116,9 @@
   flex: 1;
 }
 
-// .lb-action-sheet-grid-content {
-//   // display: flex;
-//   // flex-direction: column;
-//   // align-items: center;
-// }
+.lb-action-sheet-grid-content {
+  position: relative;
+}
 
 .lb-action-sheet-grid-icon {
   /* #ifndef APP-NVUE */
@@ -153,6 +151,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.lb-action-sheet-open-type-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
 }
 
 .lb-action-sheet-dots {
